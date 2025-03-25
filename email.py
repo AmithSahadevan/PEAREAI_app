@@ -54,25 +54,12 @@ st.markdown("""
         color: #666;
         font-size: 14px;
     }
+    /* Hide sidebar navigation */
+    .css-1d391kg, [data-testid="stSidebar"] {
+        display: none;
+    }
     </style>
     """, unsafe_allow_html=True)
-
-# Check if we should switch to the prompt page
-if 'switch_to_prompt' not in st.session_state:
-    st.session_state.switch_to_prompt = False
-
-# If we've already validated the email, set up redirection and stop further execution
-if st.session_state.switch_to_prompt:
-    # Create a button that looks like the page but is actually redirecting
-    st.markdown("""
-    <meta http-equiv="refresh" content="0; URL=prompt.py">
-    <script>
-    window.location.href = 'prompt.py';
-    </script>
-    """, unsafe_allow_html=True)
-    
-    st.button("Click here to continue to prompt page", on_click=lambda: None)
-    st.stop()  # Stop execution to prevent the rest of the page from loading
 
 # Display the logo as plain text in Montserrat font
 st.markdown('<div class="logo">PEARE AI</div>', unsafe_allow_html=True)
@@ -97,15 +84,10 @@ with st.form(key='email_form'):
             # Store email in session state
             st.session_state.user_email = email
             
-            # Instead of trying to redirect directly, set a flag to handle on next rerun
-            st.session_state.switch_to_prompt = True
-            
-            # Rerun the app to process the flag above (updated method)
-            st.rerun()
+            # Redirect to the prompt page using Streamlit's page navigation
+            st.switch_page("pages/01_Prompt.py")
         else:
             st.error('Please enter a valid email address')
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Add a footer
 st.markdown("""
