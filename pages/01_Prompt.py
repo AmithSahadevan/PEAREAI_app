@@ -52,23 +52,6 @@ st.markdown("""
         letter-spacing: -0.5px;
     }
     
-    /* Profile button styling */
-    .profile-btn {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        border-radius: 99px;
-        padding: 8px 16px;
-        border: none;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    
-    .profile-btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-    
     /* Input container styling */
     .input-container {
         max-width: 800px;
@@ -168,13 +151,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Create header with logo and profile button
+# Create header with logo
 st.markdown("""
 <div class="header">
     <div class="logo">
         <span>🍐</span> PEARE AI
     </div>
-    <button class="profile-btn">Log in</button>
 </div>
 """, unsafe_allow_html=True)
 
