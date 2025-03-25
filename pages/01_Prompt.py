@@ -108,30 +108,6 @@ st.markdown("""
         max-width: 800px;
     }
     
-    /* Action buttons styling */
-    .action-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
-    
-    .action-button {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.7);
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
-    }
-    
-    .action-button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-    
     /* Output container styling */
     .output-container {
         background-color: rgba(255, 255, 255, 0.05);
@@ -176,15 +152,6 @@ prompt = st.text_area("",
 generate = st.button("Generate", key="generate_button")
 
 st.markdown('</div>', unsafe_allow_html=True)
-
-# Bottom action buttons
-st.markdown("""
-<div class="action-buttons">
-    <button class="action-button">Recent</button>
-    <button class="action-button">Examples</button>
-    <button class="action-button">Templates</button>
-</div>
-""", unsafe_allow_html=True)
 
 # Demo output (only show if generate button is clicked)
 if generate and prompt:
