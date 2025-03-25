@@ -172,7 +172,7 @@ st.markdown("""
 st.markdown("""
 <div class="header">
     <div class="logo">
-        <span>🤖</span> Claude AI
+        <span>🍐</span> PEARE AI
     </div>
     <button class="profile-btn">Log in</button>
 </div>
