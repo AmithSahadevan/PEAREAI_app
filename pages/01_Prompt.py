@@ -245,14 +245,22 @@ def generate_video_cli(prompt):
         cmd = [
             f"{venv_path}/Scripts/python",
             script_path,
+            "--prompt", clean_prompt,
+            "--resolution", "832x480",
+            "--num-frames", "81",
+            "--num-steps", "30",
+            "--guidance-scale", "7.5",
+            "--flow-shift", "5.0",
+            "--seed", "-1",
+            "--negative-prompt", "",
+            "--tea-cache", "0.0",
+            "--tea-cache-step", "20",
+            "--riflex", "auto",
             "--profile", "4",
             "--lora-dir", "./loras",
-            "--t2v",
-            "--prompt", clean_prompt,
             "--vae-config", "2",
             "--transformer", "ckpts/wan2.1_text2video_1.3B_bf16.safetensors",
-            "--resolution", "832x480",
-            "--num-frames", "81"
+            "--t2v"
         ]
         
         print("\nExecuting command:")
