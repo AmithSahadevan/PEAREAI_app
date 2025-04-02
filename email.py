@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import os
+from queue_manager import email_queue
 
 # Configure the Streamlit page
 st.set_page_config(
@@ -81,11 +82,18 @@ with st.form(key='email_form'):
     
     if submit_button:
         if email and '@' in email and '.' in email:
-            # Store email in session state
-            st.session_state.user_email = email
-            
-            # Redirect to the prompt page using Streamlit's page navigation
-            st.switch_page("pages/01_Prompt.py")
+            # Check if queue is full
+            if email_queue.is_full():
+                st.error('Queue is full, please try again later')
+            else:
+                # Add email to queue
+                if email_queue.add_email(email):
+                    # Store email in session state
+                    st.session_state.user_email = email
+                    # Redirect to the prompt page using Streamlit's page navigation
+                    st.switch_page("pages/01_Prompt.py")
+                else:
+                    st.error('Failed to add email to queue, please try again')
         else:
             st.error('Please enter a valid email address')
 
